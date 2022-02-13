@@ -11,6 +11,20 @@ kotlin {
     iosX64()
     iosArm64()
     // iosSimulatorArm64() sure all ios dependencies support this target
+    js(IR) {
+        useCommonJs()
+        browser {
+            webpackTask {
+                output.libraryTarget = "commonjs2"
+            }
+            testTask {
+                useKarma {
+                    useSafari()
+                }
+            }
+        }
+        binaries.executable()
+    }
 
     cocoapods {
         summary = "Some description for the Shared Module"
@@ -54,6 +68,12 @@ kotlin {
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
             // iosSimulatorArm64Test.dependsOn(this)
+        }
+        val jsMain by getting {
+            dependsOn(commonMain)
+        }
+        val jsTest by getting {
+            dependsOn(commonTest)
         }
     }
 }

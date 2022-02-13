@@ -6,5 +6,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "KMM Example Lib"
+rootProject.name = "KMM-Example-Lib"
 include(":shared")
