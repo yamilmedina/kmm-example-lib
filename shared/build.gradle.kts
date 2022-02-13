@@ -19,7 +19,7 @@ kotlin {
             }
             testTask {
                 useKarma {
-                    useSafari()
+                    useSafari() // should use a headless browser!
                 }
             }
         }
